@@ -4,8 +4,20 @@
 @import "bootstrap";
 
 body {
-  background-color: #fafafa;
   font-family: proxima-nova, 'Helvetica Neue', Arial, Helvetica, sans-serif;
+}
+
+h1 {
+  font-family: proxima-nova, 'Helvetica Neue', Arial, Helvetica, sans-serif;
+  text-align: center;
+}
+
+p {
+  font-family: proxima-nova, 'Helvetica Neue', Arial, Helvetica, sans-serif;
+  text-align: center;
+  color: #68ad43;
+  font-weight: 500;
+  font-size: 18px;
 }
 
 .navbar-brand {

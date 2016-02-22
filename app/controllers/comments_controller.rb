@@ -8,7 +8,7 @@ class CommentsController < ApplicationController
 
     if @comment.save
       flash[:success] = "Thanks for the love!"
-      redirect_to :back
+      redirect_to @post
     else
       flash[:alert] = "You missed something!"
       render root_path
@@ -20,7 +20,7 @@ class CommentsController < ApplicationController
 
   @comment.destroy
   flash[:success] = "Fine, Take It Back!"
-  redirect_to root_path
+  redirect_to @post
 end
 
   private

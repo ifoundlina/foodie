@@ -9,7 +9,8 @@
           <%= simple_form_for @post, html: { class: 'form-horizontal', multipart: true } do |f| %>
             <div class="panel-body">
               <%= f.input :image %><br>
-              <%= f.input :caption, placeholder: 'Caption', input_html: { class: 'input-lg' } %><br>
+              <P>Add a caption!</p>
+              <%= f.input :caption, label: false, input_html: { class: 'form-control' }%><br>
               <%= f.button :submit, "Post", class: 'btn-lg btn-success btn-block' %>
             </div>
           <% end %>

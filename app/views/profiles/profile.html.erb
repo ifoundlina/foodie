@@ -2,7 +2,12 @@
 <p class="notice"><%= notice %></p>
 <p class="alert"><%= alert %></p>
 
+<div class="container">
+  <h1>Hello Foodie, Here Are Your Posts!</h1>
+  <p>Manage: See, Edit or Delete Your Posts</p>
+
 
    <% @posts.each do |post| %>
    <%= render 'posts/post', post: post %>
    <% end %>
+</div>

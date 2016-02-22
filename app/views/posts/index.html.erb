@@ -2,6 +2,7 @@
 <p class="alert"><%= alert %></p>
 
 <div class="container">
+  <h2>Welcome to Foodie!</h2>
 <div class="posts-wrapper row">
   <% @posts.each do |post| %>
     <div class="post">
@@ -25,7 +26,7 @@
                 <%= comment.content %>
               </div>
               <% if comment.user == current_user %>
-                <%= link_to "Delete Comment", post_comment_path(post, comment), method: :delete, data: { confirm: "Are you sure?" } %>
+                <%= link_to "Delete Comment", post_comment_path(post, comment), class: "btn-xs btn btn-warning", method: :delete, data: { confirm: "Are you sure?" } %>
               <% end %>
             </div>
           <% end %>
