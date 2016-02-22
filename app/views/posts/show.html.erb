@@ -18,12 +18,6 @@
         <%= image_tag @post.image.url(:medium) %>
       </div>
       <div class="post-bottom">
-        <div class="caption">
-          <div class="user-name">
-            <%= @post.user.user_name %>
-          </div>
-          <%= @post.caption %>
-        </div>
         <% if @post.comments %>
           <% @post.comments.each do |comment| %>
             <div class="comment">
@@ -34,7 +28,7 @@
                 <%= comment.content %>
               </div>
               <% if comment.user == current_user %>
-                <%= link_to post_comment_path(@post, comment), method: :delete, data: { confirm: "Are you sure?" } %>
+                <%= link_to "Delete Comment", post_comment_path(@post, comment), method: :delete, data: { confirm: "Are you sure?" } %>
               <% end %>
             </div>
           <% end %>
@@ -42,7 +36,10 @@
         <div class="comment-form">
           <%= form_for [@post, @post.comments.new] do |f| %>
             <%= f.text_field :content, placeholder: 'Add a comment...' %>
-          <% end %>
+            <%= f.button :submit, class: "btn-xs btn btn-success"  %>
+            <%= link_to "Like", like_post_path(@post), class: "btn-xs btn btn-info", method: :put %>
+            <%= @post.votes_for.size %>
+            <% end %>
         </div>
       </div>
     </div>

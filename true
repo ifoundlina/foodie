@@ -1,0 +1,2 @@
+      invoke  active_record
+      create    db/migrate/20160220192042_add_length_to_post.rb

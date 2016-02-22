@@ -29,6 +29,10 @@
    font-family: proxima-nova, 'Helvetica Neue', Arial, Helvetica, sans-serif;
  }
 
+h1 {
+  text-align: center;
+}
+
  .alert {
    margin-bottom: 0px;
  }
@@ -63,12 +67,16 @@
    padding-left: 500px;
  }
 
+ a {
+   color: #68ad43;
+ }
+
  /* ## POST CUSTOMISATIONS ## */
 
  .posts-wrapper {
    padding-top: 40px;
    margin: 0 auto;
-   max-width: 642px;
+   max-width: 640px;
    width: 100%;
  }
 
@@ -111,11 +119,13 @@
    }
    .caption {
      margin-bottom: 7px;
+     margin-top: 10px;
    }
    .user-name {
      font-weight: 500;
-     color: #125688;
+     color: #00a7ee;
      font-size: 15px;
+     padding-top: 10px;
    }
    .user-name, .caption-content {
      display: inline;
@@ -150,6 +160,7 @@
  .comment-like-form {
    padding-top: 24px;
    margin-top: 13px;
+   margin-bottom: 13px;
    margin-left: 24px;
    margin-right: 24px;
    min-height: 68px;
@@ -157,6 +168,10 @@
    border-top: 1px solid #EEEFEF;
    flex-direction: row;
    justify-content: center;
+ }
+
+ .comment {
+   padding-top: 20px;
  }
 
  /* ## Wrapper and styling for the new, edit & devise views ## */
@@ -169,21 +184,13 @@
  .registration-bg {
    padding-top: 4em;
    height: 100%;
-   background-image: image-url('regbackg.jpg');
-   -moz-background-size: cover;
-   -webkit-background-size: cover;
-   -o-background-size: cover;
-   background-size: cover;
+   background-color: #19b2eb;
  }
 
  .login-bg {
    padding-top: 4em;
    height: 100%;
-   background-image: image-url('loginbg.jpg');
-   -moz-background-size: cover;
-   -webkit-background-size: cover;
-   -o-background-size: cover;
-   background-size: cover;
+   background-color: #19b2eb;
  }
 
  .log-in{
@@ -213,31 +220,11 @@
  }
 
 
- #paginator {
-   color: #4090DB;
-   height: 120px;
-   width: 120px;
-   margin: 60px auto 40px;
-   position: relative;
-   display: table;
-   border: 2px solid #4090DB;
-   border-radius: 50%;
-   :hover {
-     border: 1px solid #2D6DA8;
-     border-radius: 50%;
-   }
+ .comment-form {
+   padding-top: 25px;
  }
 
- #load_more {
-   display: table-cell;
-   font-size: 12px;
-   padding: 0px 9px;
-   vertical-align: middle;
-   text-decoration: none;
-   a :hover {
-     color: #2D6DA8;
-   }
- }
+
 
  .comments {
    .paginator {
@@ -257,11 +244,6 @@
    padding: 20px 0;
  }
 
- .profile-image {
-   margin: 20px auto;
-   height: 152px;
-   width: 152px;
- }
 
  .user-name-and-follow {
    display: inline;
@@ -269,6 +251,7 @@
 
  .profile-user-name {
    display: inline;
+   color: #000;
  }
 
  .edit-button {

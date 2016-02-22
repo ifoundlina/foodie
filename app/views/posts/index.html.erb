@@ -1,26 +1,20 @@
 <p class="notice"><%= notice %></p>
 <p class="alert"><%= alert %></p>
 
-
+<div class="container">
 <div class="posts-wrapper row">
   <% @posts.each do |post| %>
     <div class="post">
       <div class="post-head">
         <div class="thumb-img"></div>
         <div class="user-name">
-          <%= post.user.user_name %>
+          <%= link_to post.user.user_name, profile_path(post.user.user_name) %> <i class="fa fa-comments fa-lg"></i> <%= post.caption %>
         </div>
       </div>
       <div class="image center-block">
         <%= link_to (image_tag post.image.url(:medium), class:'img-responsive'), post_path(post) %>
       </div>
       <div class="post-bottom">
-        <div class="caption">
-          <div class="user-name">
-            <%= post.user.user_name %>
-          </div>
-          <%= post.caption %>
-        </div>
         <% if post.comments %>
           <% post.comments.each do |comment| %>
             <div class="comment">
@@ -31,7 +25,7 @@
                 <%= comment.content %>
               </div>
               <% if comment.user == current_user %>
-                <%= link_to post_comment_path(post, comment), method: :delete, data: { confirm: "Are you sure?" } %>
+                <%= link_to "Delete Comment", post_comment_path(post, comment), method: :delete, data: { confirm: "Are you sure?" } %>
               <% end %>
             </div>
           <% end %>
@@ -39,9 +33,13 @@
         <div class="comment-form">
           <%= form_for [post, post.comments.new] do |f| %>
             <%= f.text_field :content, placeholder: 'Add a comment...' %>
+            <%= f.button :submit, class: "btn-xs btn btn-success"  %>
+            <%= link_to "Like", like_post_path(post), class: "btn-xs btn btn-info", method: :put %>
+            <%= post.votes_for.size %>
           <% end %>
         </div>
       </div>
     </div>
   <% end %>
+</div>
 </div>

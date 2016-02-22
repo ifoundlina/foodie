@@ -1,0 +1,8 @@
+
+<p class="notice"><%= notice %></p>
+<p class="alert"><%= alert %></p>
+
+
+   <% @posts.each do |post| %>
+   <%= render 'posts/post', post: post %>
+   <% end %>

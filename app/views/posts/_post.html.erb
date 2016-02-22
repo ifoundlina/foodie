@@ -1,7 +1,6 @@
 <div class="posts-wrapper">
   <div class="post">
     <div class="post-head">
-      <div class="thumb-img"></div>
       <div class="user-name">
         <%= post.user.user_name %>
       </div>
@@ -11,11 +10,6 @@
     </div>
     <div class="post-bottom">
       <div class="caption">
-        <div class="user-name">
-          <%= post.user.user_name %>
-        </div>
-        <%= post.caption %>
-      </div>
       <% if post.comments %>
         <% post.comments.each do |comment| %>
           <div class="comment">
@@ -27,22 +21,19 @@
             </div>
             <% if comment.user == current_user %>
               <%= link_to post_comment_path(post, comment), method: :delete, data: { confirm: "Are you sure?" } do %>
-                <span>(class="glyphicon glyphicon-remove delete-comment")</span>
               <% end %>
             <% end %>
           </div>
         <% end %>
       <% end %>
     </div>
-    <div class="comment-like-form row">
-      <div class="like-button col-sm-1">
-        <span>(class="glyphicon glyphicon-heart-empty")</span>
-      </div>
-      <div class="comment-form col-sm-11">
+      <div class="comment-form">
         <%= form_for [post, post.comments.new] do |f| %>
           <%= f.text_field :content, placeholder: 'Add a comment...' %>
+          <%= f.button :submit, class: "btn-xs btn btn-success"  %>
+          <%= link_to "Like", like_post_path(post), class: "btn-xs btn btn-info", method: :put %>
+          <%= post.votes_for.size %>
         <% end %>
-      </div>
     </div>
   </div>
 </div>
