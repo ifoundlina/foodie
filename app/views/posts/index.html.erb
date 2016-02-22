@@ -2,6 +2,17 @@
 <p class="alert"><%= alert %></p>
 
 <div class="container">
+  <% if params[:search]%>
+    <% if @posts.present? %>
+    <h2>Ok, This is what we found!</h2>
+    <%= render @posts %>
+    <% else %>
+    <div align="center">
+    <h2>There are no posts containing<br>the term(s) <%= params[:search] %>.</h2><br>
+    <%= link_to "TRY AGAIN", search_path, class: "btn btn-success btn-lg"%>
+  </div>
+    <%end %>
+  <% else %>
   <h2>Welcome to Foodie!</h2>
 <div class="posts-wrapper row">
   <% @posts.each do |post| %>
@@ -41,6 +52,7 @@
         </div>
       </div>
     </div>
-  <% end %>
-</div>
+    <% end %>
+  </div>
+  <%end %>
 </div>

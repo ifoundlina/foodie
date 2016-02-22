@@ -17,7 +17,16 @@ class PostsController < ApplicationController
 
     @posts = Post.order(created_at: :desc).limit(25).
     offset(offset).all
+
+    @posts = Post.all
+    if params[:search]
+   @posts = Post.search(params[:search]).order("created_at DESC")
+    else
+      @posts = Post.all.order('created_at DESC')
+    end
+
   end
+
 
   def trend
     @posts = Post.highest_voted

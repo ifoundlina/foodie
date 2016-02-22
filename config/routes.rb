@@ -21,6 +21,9 @@ Rails.application.routes.draw do
   end
 
   get 'trend' => 'posts#trend'
+  get 'search' => 'posts#search'
+
+
 
   get ':user_name', to: 'profiles#show', as: :profile
 
