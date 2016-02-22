@@ -29,6 +29,11 @@
     background:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAYAAACp8Z5+AAAAG0lEQVQIW2OcMmWKT05OzhYGKGCEMYgTAGkHAASdBg1yWKbAAAAAAElFTkSuQmCC) repeat;
  }
 
+ ul.nav  a:hover { color: #00e4d7 !important; }
+
+ ul.nav  a { color: #dadada !important; }
+
+
 h1 {
   text-align: center;
   font-weight: 700;
@@ -42,8 +47,27 @@ h2 {
   font-weight: 700;
 }
 
+h3 {
+  font-family: proxima-nova, 'Helvetica Neue', Arial, Helvetica, sans-serif;
+  text-align: center;
+  font-size: 45px;
+  color: inherit;
+  font-weight: 700;
+  padding-bottom: 75px;
+}
+
+h4 {
+  font-family: proxima-nova, 'Helvetica Neue', Arial, Helvetica, sans-serif;
+  text-align: center;
+  color: #68ad43;
+  font-weight: 500;
+  font-size: 18px;
+  padding-bottom: 75px;
+}
+
 .logopic {
   height: 60px;
+  padding-right: 20px;
 }
 
  .alert {
@@ -54,20 +78,11 @@ h2 {
 
  .navbar {
    margin-bottom: 0px;
+   background-color: #000;
+   padding-top: 10px;
  }
 
- .navbar-brand {
-   a {
-     color: #125688;
-   }
- }
 
- .navbar-default {
-   background-color: #fff;
-   .navbar-nav li a {
-     color: #125688;
-   }
- }
 
  .navbar-container {
    max-width: 640px;

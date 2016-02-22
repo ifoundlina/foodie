@@ -1,6 +1,7 @@
 <p class="notice"><%= notice %></p>
 <p class="alert"><%= alert %></p>
 
+<h1>About This Post</h1>
 
 <div class="posts-wrapper row">
     <div class="post">
@@ -10,7 +11,8 @@
           <%= link_to "FEED", posts_path, class: "btn-xs btn btn-info" %>
           <%= link_to "Edit Post", edit_post_path(@post), class: "btn-xs btn btn-warning" %>
           <% else %>
-          <%= link_to "FEED", posts_path %>
+          <%= link_to @post.user.user_name, profile_path(@post.user.user_name), class: "btn-xs btn btn-success" %>
+          <%= link_to "FEED", posts_path, class: "btn-xs btn btn-info" %>
           <% end %>
         </div>
       </div>

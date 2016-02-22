@@ -13,10 +13,10 @@
   </div>
     <%end %>
   <% else %>
-  <h3>Welcome to Foodie!</h3>
-<div class="row">
+  <h2>Welcome to Foodie!</h2>
+<div class="posts-wrapper row">
   <% @posts.each do |post| %>
-    <div class="col-md-4 post">
+    <div class="post">
       <div class="post-head">
         <div class="thumb-img"></div>
         <div class="user-name">
@@ -27,9 +27,28 @@
         <%= link_to (image_tag post.image.url(:medium), class:'img-responsive'), post_path(post) %>
       </div>
       <div class="post-bottom">
+        <% if post.comments %>
+          <% post.comments.each do |comment| %>
+            <div class="comment">
+              <div class="user-name">
+                <%= comment.user.user_name %>
+              </div>
+              <div class="comment-content">
+                <%= comment.content %>
+              </div>
+              <% if comment.user == current_user %>
+                <%= link_to "Delete Comment", post_comment_path(post, comment), class: "btn-xs btn btn-warning", method: :delete, data: { confirm: "Are you sure?" } %>
+              <% end %>
+            </div>
+          <% end %>
+        <% end %>
         <div class="comment-form">
+          <%= form_for [post, post.comments.new] do |f| %>
+            <%= f.text_field :content, placeholder: 'Add a comment...' %>
+            <%= f.button :submit, class: "btn-xs btn btn-success"  %>
             <%= link_to "Like", like_post_path(post), class: "btn-xs btn btn-info", method: :put %>
             <%= post.votes_for.size %>
+          <% end %>
         </div>
       </div>
     </div>
