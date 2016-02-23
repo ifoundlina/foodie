@@ -2,6 +2,16 @@
 <p class="alert"><%= alert %></p>
 
 <div class="container">
+  <% if params[:search]%>
+    <% if @posts.present? %>
+    <h2>Ok, This is what we found!</h2>
+    <%= render @posts %>
+    <% else %>
+    <div align="center">
+    <h2>There are no posts containing<br>the term(s) <%= params[:search] %>.</h2><br>
+  </div>
+    <%end %>
+  <% else %>
   <h2>Trending at Foodie!</h2>
   <h4>Below are the most liked posts!</h4>
   <div class="row">
@@ -25,4 +35,5 @@
       </div>
       <% end %>
     </div>
+    <% end %>
   </div>

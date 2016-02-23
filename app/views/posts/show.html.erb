@@ -1,18 +1,21 @@
 <p class="notice"><%= notice %></p>
 <p class="alert"><%= alert %></p>
+<div class="container">
 
-<h1>About This Post</h1>
 
-<div class="posts-wrapper row">
+  <h1>About This Post</h1>
+
+  <div class="posts-wrapper row">
     <div class="post">
       <div class="post-head">
         <div class="user-name">
           <% if @post.user.id == current_user.id %>
           <%= link_to "FEED", posts_path, class: "btn-xs btn btn-info" %>
           <%= link_to "Edit Post", edit_post_path(@post), class: "btn-xs btn btn-warning" %>
+          <i class="fa fa-comments fa-lg"></i> <%= @post.caption %>
           <% else %>
-          <%= link_to @post.user.user_name, profile_path(@post.user.user_name), class: "btn-xs btn btn-success" %>
           <%= link_to "FEED", posts_path, class: "btn-xs btn btn-info" %>
+          <%= link_to @post.user.user_name, profile_path(@post.user.user_name), class: "btn-xs btn btn-success" %> <i class="fa fa-comments fa-lg"></i> <%= @post.caption %>
           <% end %>
         </div>
       </div>
@@ -21,28 +24,29 @@
       </div>
       <div class="post-bottom">
         <% if @post.comments %>
-          <% @post.comments.each do |comment| %>
-            <div class="comment">
-              <div class="user-name">
-                <%= comment.user.user_name %>
-              </div>
-              <div class="comment-content">
-                <%= comment.content %>
-              </div>
-              <% if comment.user == current_user %>
-                <%= link_to "Delete Comment", post_comment_path(@post, comment),class: "btn-xs btn btn-warning", method: :delete, data: { confirm: "Are you sure?" } %>
-              <% end %>
-            </div>
+        <% @post.comments.each do |comment| %>
+        <div class="comment">
+          <div class="user-name">
+            <%= comment.user.user_name %>
+          </div>
+          <div class="comment-content">
+            <%= comment.content %>
+          </div>
+          <% if comment.user == current_user %>
+          <%= link_to "Delete Comment", post_comment_path(@post, comment),class: "btn-xs btn btn-warning", method: :delete, data: { confirm: "Are you sure?" } %>
           <% end %>
+        </div>
+        <% end %>
         <% end %>
         <div class="comment-form">
           <%= form_for [@post, @post.comments.new] do |f| %>
-            <%= f.text_field :content, placeholder: 'Add a comment...' %>
-            <%= f.button :submit, class: "btn-xs btn btn-success"  %>
-            <%= link_to "Like", like_post_path(@post), class: "btn-xs btn btn-info", method: :put %>
-            <%= @post.votes_for.size %>
-            <% end %>
+          <%= f.text_field :content, placeholder: 'Add a comment...' %>
+          <%= f.button :submit, class: "btn-xs btn btn-success"  %>
+          <%= link_to "Like", like_post_path(@post), class: "btn-xs btn btn-info", method: :put %>
+          <%= @post.votes_for.size %>
+          <% end %>
         </div>
       </div>
     </div>
+  </div>
 </div>

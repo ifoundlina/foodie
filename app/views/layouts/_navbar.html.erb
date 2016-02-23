@@ -26,6 +26,7 @@
       </li>
       <% end %>
     </ul>
+<% if current_page?('/') || current_page?('/index') %>
     <div class="col-sm-3 col-md-3 pull-right">
       <form class="navbar-form" role="search">
         <div class="input-group">
@@ -35,6 +36,7 @@
           <%= submit_tag "Search", class: 'btn btn-info'%>
           <% end %>
         </div>
+        <% end %>
         </div>
     </div>
   </form>

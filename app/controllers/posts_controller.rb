@@ -32,6 +32,10 @@ class PostsController < ApplicationController
     @posts = Post.highest_voted
   end
 
+  def foodie
+    @posts = Post.all
+  end
+
 
   def show
     @post = Post.find(params[:id])

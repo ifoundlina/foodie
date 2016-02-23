@@ -21,6 +21,8 @@ Rails.application.routes.draw do
   end
 
   get 'trend' => 'posts#trend'
+  get 'foodie' => 'posts#foodie'
+
 
 
 
