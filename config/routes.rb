@@ -3,7 +3,9 @@ Rails.application.routes.draw do
   get 'profiles/profile'
 
 
+
   devise_for :users, :controllers => { registrations: 'registrations' }
+  
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
   # You can have the root of your site routed with "root"
@@ -22,9 +24,7 @@ Rails.application.routes.draw do
 
   get 'trend' => 'posts#trend'
   get 'foodie' => 'posts#foodie'
-
-
-
+  get 'user' => 'users#user'
 
   get ':user_name', to: 'profiles#show', as: :profile
 
